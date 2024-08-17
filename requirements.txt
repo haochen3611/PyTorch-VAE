@@ -1,4 +1,4 @@
-pytorch-lightning==1.5.6
-PyYAML==6.0
-tensorboard>=2.2.0
-torchsummary==1.5.1
+pytorch-lightning==1.9.5
+PyYAML
+tensorboard
+torchsummary
