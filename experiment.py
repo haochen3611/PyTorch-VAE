@@ -5,14 +5,14 @@ from torch import optim
 from models import BaseVAE
 from models.types_ import *
 from utils import data_loader
-import pytorch_lightning as pl
+import lightning as L
 from torchvision import transforms
 import torchvision.utils as vutils
 from torchvision.datasets import CelebA
 from torch.utils.data import DataLoader
 
 
-class VAEXperiment(pl.LightningModule):
+class VAEXperiment(L.LightningModule):
 
     def __init__(self,
                  vae_model: BaseVAE,
@@ -27,6 +27,8 @@ class VAEXperiment(pl.LightningModule):
             self.hold_graph = self.params['retain_first_backpass']
         except:
             pass
+        
+        self.automatic_optimization = False
 
     def forward(self, input: Tensor, **kwargs) -> Tensor:
         return self.model(input, **kwargs)
